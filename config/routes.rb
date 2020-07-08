@@ -13,4 +13,7 @@ Rails.application.routes.draw do
    get("/hello_world", to: "welcome#hello_world") # when someone sends a GET
   # request to "/hello_world" path, they are routed (sent) to welcome controller,
   # hello_world action (method).
+
+  # GET "/" WelcomeController.root method
+  get "/", to: "welcome#root"
 end
