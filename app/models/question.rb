@@ -126,4 +126,7 @@ class Question < ApplicationRecord
 
     # Question.where(['title LIKE ?', '%el%']).limit(10).order(created_at: :DESC)
 
+    # Exercise: First 10 most viewed questions in last 10 days
+    # Question.where('created_at >= ?', 30.days.ago).order(view_count: :DESC).limit(10)
+
 end
