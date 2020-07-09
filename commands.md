@@ -21,3 +21,17 @@
 # To generate a controller run:
 
 `rails generate controller <your-controller-name>` or shorthand `rails g controller <your-controller-name>`
+
+# To generate a migration in Rails do:
+
+`Rails generate migration <migration-name>` or use the following shorthand
+`Rails g migration <migration-name>`
+
+# To migrate rails migration run:
+
+`rails db:migrate`
+
+# To generate a model in rails do:
+
+`rails generate model <model-name>` or use the following shorthand
+`rails g model <model-name>`
