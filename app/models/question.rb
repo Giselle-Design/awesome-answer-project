@@ -120,4 +120,10 @@ class Question < ApplicationRecord
     # result = connection.execute('SELECT * FROM questions WHERE id = 20;')
     # result.first 👈 because the result is an array of hashes
 
+    # Exercise: Build a query that fetches the first 10 questions that contain
+    # "el" in their titles ordered by created_at in a descending order. 
+    # solution
+
+    # Question.where(['title LIKE ?', '%el%']).limit(10).order(created_at: :DESC)
+
 end
