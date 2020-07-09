@@ -78,5 +78,46 @@ class Question < ApplicationRecord
     # Note: offset will skip first 10 records 
     # SELECT "questions".* FROM "questions" WHERE (view_count > 10) AND (title ILIKE '%a%') ORDER BY id DESC LIMIT 10 OFFSET 10;
 
-    
+    # UPDATE RECORDS
+    # once you've select one or more records, you have ability to update them
+    # Manually setting attributes
+    # q = Question.find 10
+    # q.title = "UPDATED TITLE"
+    # q.view_count = 10
+    # q.save
+
+    # Using .update_attribute, .update_attributes, or .update
+    # q = Question.find 11
+    # q.update({ title: 'UPDATED TITLE', body: 'UPDATED BODY' }) or 
+    # q.update_attribute({ title: 'UPDATED TITLE' }) or 
+    # q.update_attributes({ title: 'UPDATED TITLE', body: 'UPDATED BODY' }) or 
+
+    # DELETING RECORDS
+    # using .destroy 
+    # q = Question.find 10
+    # q.destroy
+
+    # using .delete
+    # q = Question.find 11
+    # q.delete
+
+    # using .delete skips executing callback methods after_destroy and before_destroy
+    # and also skips deleting or nullifying associated records in the :dependent option
+    # with associations. Generally, avoid using .delete in favor of .destroy.
+    # There are very few cases when you want to use .delete
+
+    # Aggregate Functions 
+    # .count
+    # Question.count 👈 counts the number of records in question model 
+    # SQL Equivalent:
+    # SELECT COUNT(*) FROM "questions";
+
+    # .group
+    # Question.select('avg(view_count) as count').group('title')
+
+    # CALLING RAW QUERIES
+    # connection = ActiveRecord::Base.connection
+    # result = connection.execute('SELECT * FROM questions WHERE id = 20;')
+    # result.first 👈 because the result is an array of hashes
+
 end
