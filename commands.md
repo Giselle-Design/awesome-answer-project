@@ -31,7 +31,19 @@
 
 `rails db:migrate`
 
+# To rollback last migration do:
+
+`rails db:rollback`
+
+# To check the status of your migrations do:
+
+`rails db:migrate:status`
+
 # To generate a model in rails do:
 
 `rails generate model <model-name>` or use the following shorthand
 `rails g model <model-name>`
+
+# To run your seeds do:
+
+`rails db:seed`
