@@ -32,6 +32,36 @@ class Question < ApplicationRecord
     # unlike the 'validates' method regular validations
     validate :no_apple
 
+    # before_validation is a lifecycle callback
+    # method that allows to repond to events during 
+    # the life of a model instance (i.e. being validated, 
+    #  being created, being updated etc.)
+    # All lifecycle callback methods take a symbol
+    # named after a method and calls that method 
+    # at the appropriate time.
+    before_validation :set_default_view_count
+
+    # For all available methods go to:
+    # https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html
+
+    # Create a scope with a class method 
+    # https://guides.rubyonrails.org/active_record_querying.html#scopes
+
+    # def self.recent
+    #     order(created_at: :DESC).limit(10)
+    # end
+
+    # Scopes are commonly used feature of rails, that 
+    # there's another way to create them quicker. It
+    # takes a name and a lambda as a callback
+    scope(:recent, -> { order(created_at: :DESC).limit(10) })
+
+    # def self.search(query)
+    #     where("title ILIKE ? OR body ILIKE ?", "%#{query}%", "%#{query}%")
+    # end
+    # Equivalent to:
+    scope(:search, -> (query) { where("title ILIKE ? OR body ILIKE ?", "%#{query}%", "%#{query}%") })
+
     private 
 
     def no_apple
@@ -47,6 +77,13 @@ class Question < ApplicationRecord
             #  - An error message as a string
             self.errors.add(:body, "must not have apples")
         end
+    end
+
+    def set_default_view_count
+        # If you are writing to an attribute accessor, you 
+        # must prefix with 'self'. Which you don't need to do 
+        # if you are reading it instead
+        self.view_count ||= 0
     end
 
 
