@@ -5,6 +5,51 @@ class Question < ApplicationRecord
     # This command also genrates a migration file 
     # in db/migrate
 
+    # V A L I D A T I O N S
+    # Create validations by using the 'validates' method
+    # The arguments are (in order):
+    #  - A column name as symbol
+    #  - Named arguments, corresponding to the validaion rules
+
+    # To read more on validations, go to:
+    # https://guides.rubyonrails.org/active_record_validations.html
+
+    validates(:title, presence: true, uniqueness: true)
+
+    validates(
+        :body,
+        presence: { message: "must exist" },
+        length: { minimum: 10 }
+        )
+
+    validates(
+        :view_count,
+        numericality: true
+    )
+
+    # Custom validation
+    # The method for custom validations is singular
+    # unlike the 'validates' method regular validations
+    validate :no_apple
+
+    private 
+
+    def no_apple
+        # &. is the safe navigation operator. It's used 
+        # like the . operator to call methods on an object.
+        # If the method doesn't exist for the object, 'nil'
+        # will be returned instead of getting error
+        if body&.downcase&.include?('apple')
+            # To make a record invalid. You must add a 
+            # validation error using the 'errors' 'add' method
+            # It's arguments (in order):
+            #  - A symbol for the invalid column
+            #  - An error message as a string
+            self.errors.add(:body, "must not have apples")
+        end
+    end
+
+
     # Rails will add attr_accessors for all columns 
     # of the table (i.e. title, body, created_at, updated_at, view_count)
 
