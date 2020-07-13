@@ -1,8 +1,15 @@
 <h1>All Questions</h1>
 
-<% @questions.each do |question| %>
-    <div>
-        <h2><%= link_to question.title, question_path(question) %></h2>
-        <hr />
+<div class="row">
+    <div class="=col-2">
     </div>
-<% end %>
+
+    <div class="col-10">
+    <% @questions.each do |question| %>
+        <div>
+            <h3><%= link_to question.title, question_path(question) %></h3>
+            <hr />
+        </div>
+    <% end %>
+    </div>
+</div>

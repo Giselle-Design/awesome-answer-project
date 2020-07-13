@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
 
   <body>
@@ -17,12 +18,31 @@
       'link_to' is a method called view helper that comes with Rails and 
       it generates <a> tag
     %>
-    <%= link_to 'Contact Us', contact_us_path %>
-    |
-    <%= link_to 'New Question', new_questions_path %>
-    |
-    <%= link_to 'All Questions', questions_path %>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#">Awesome Answers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <ul class="navbar-nav navigation-links">
+                <li class="nav-item">
+                    <%= link_to 'Contact Us', contact_us_path %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'New Question', new_questions_path %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'All Questions', questions_path %>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <hr />
+    <div class="container">
     <%= yield %>
+    <div>
   </body>
 </html>
