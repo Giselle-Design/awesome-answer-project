@@ -15,11 +15,39 @@ Rails.application.routes.draw do
   # hello_world action (method).
 
   # GET "/" WelcomeController.root method
-  get "/", to: "welcome#root"
+  get "/", to: "welcome#root", as: 'root'
 
   # GET "/contact_us"
   get("/contact_us", to: "welcome#contact_us")
 
   # POST "/process_contact"
   post("/process_contact", to: "welcome#process_contact")
+
+  # Question Related Routes
+  # question new page
+  # when someone sends a GET request to /questions/new, it will be handled by the new actions 
+  # inside questions controller
+  get '/questions/new', {to: 'questions#new', as: :new_questions }
+
+  # handles submission of new questions form
+  post '/questions', {to: 'questions#create', as: :questions }
+  
+  # question show page
+  get '/questions/:id', { to: 'questions#show', as: :question }
+
+  # questions index page
+  get '/questions', { to: 'questions#index' }
+
+  # question edit page
+  get '/questions/:id/edit', { to: 'questions#edit', as: :edit_question}
+  
+  # handles submission of form on the question edit page
+  patch '/questions/:id', { to: 'questions#update' }
+
+  # delete a question
+  delete '/questions/:id', { to: 'questions#destroy' }
+
+  # Below line builds all of the above routes for us :)
+  # resources :questions
+
 end
