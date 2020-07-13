@@ -17,6 +17,14 @@
     })
 %>
 
+<% if @question.errors.any? %>
+    <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <%# https://guides.rubyonrails.org/form_helpers.html %>
 <%= form_with  model: @question, local: true do |f| %>
     <div>
