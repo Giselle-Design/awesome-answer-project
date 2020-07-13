@@ -1,5 +1,9 @@
-<h1>We are going to show a single question here</h1>
+<h1><%= @question.title %></h1>
+<p><%= @question.body %></p>
+<p><%= @question.created_at %></p>
 
-<h2>We will have both Edit and Delete buttons</h2>
-<h3>Edit will take us to '/questions/:id/edit' which we already have</h3>
-<h3>Delete button will send a DELETE request to 'questions/:id' to delete the question</h3>
+<%= link_to "Edit", edit_question_path(@question) %>
+<%= link_to "Delete", question_path(@question), 
+    method: :delete, 
+    data: { confirm: "Are you sure?" } 
+%>

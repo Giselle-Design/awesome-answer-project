@@ -1,1 +1,8 @@
-<h1>Here we will show the list of questions titles</h1>
+<h1>All Questions</h1>
+
+<% @questions.each do |question| %>
+    <div>
+        <h2><%= link_to question.title, question_path(question) %></h2>
+        <hr />
+    </div>
+<% end %>
