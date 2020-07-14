@@ -5,6 +5,41 @@ class Question < ApplicationRecord
     # This command also genrates a migration file 
     # in db/migrate
 
+    # Adding 'dependent: :destroy' option tells rails to
+    # delete associated records before deleting the record
+    # itself. In this case, when a question is deleted,
+    # its answers are deleted first to satisfy the foreign
+    # key constraint.
+    # You can also use 'dependent: :nullify' which will
+    # cause all associated answers to have their question_id
+    # column set to NULL before the question is destroyed.
+
+    # if you don't use either dependent options, you will end 
+    # up with answers in your db referencing question_ids
+    # that no longer exist, likely leading to errors.
+    # Always set a dependent option to help maintain 
+    # referential integrity.
+    has_many(:answers, dependent: :destroy)
+    # has_many(:answers, dependent: :destroy) adds
+    # the following instance methods to the Question model:
+    # .answers
+    # .answers<<(object, ...)
+    # .answers.delete(object, ...)
+    # .answers.destroy(object, ...)
+    # .answers=(object)
+    # .answers_singular_ids
+    # .answers.singular_ids=(ids)
+    # .answers.clear
+    # .answers.empty?
+    # .answers.size
+    # .answers.find(...)
+    # .answers.where(...)
+    # .answers.exists?(...)
+    # .answers.built(attribute = {}, ...)
+    # .answers.create(attributes = {}, ...)
+    # .answers.create!(attributes = {}, ...)
+    # .answers.reload
+
     # V A L I D A T I O N S
     # Create validations by using the 'validates' method
     # The arguments are (in order):
