@@ -14,23 +14,23 @@ class Question < ApplicationRecord
     # To read more on validations, go to:
     # https://guides.rubyonrails.org/active_record_validations.html
 
-    validates(:title, presence: true, uniqueness: true)
+    # validates(:title, presence: true, uniqueness: true)
 
-    validates(
-        :body,
-        presence: { message: "must exist" },
-        length: { minimum: 10 }
-        )
+    # validates(
+    #     :body,
+    #     presence: { message: "must exist" },
+    #     length: { minimum: 10 }
+    #     )
 
-    validates(
-        :view_count,
-        numericality: true
-    )
+    # validates(
+    #     :view_count,
+    #     numericality: true
+    # )
 
     # Custom validation
     # The method for custom validations is singular
     # unlike the 'validates' method regular validations
-    validate :no_apple
+    # validate :no_apple
 
     # before_validation is a lifecycle callback
     # method that allows to repond to events during 
