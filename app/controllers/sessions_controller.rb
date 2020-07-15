@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    byebug
     user = User.find_by_email params[:email]
     if user&.authenticate params[:password]
       # The 'session' is an object useable in
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
       flash[:alert] = "Wrong email or password"
       render :new 
     end
+  end
 
   def destroy
     session[:user_id] = nil 

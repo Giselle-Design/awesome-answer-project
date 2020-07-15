@@ -8,13 +8,15 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    helper_method(:user_user)
+    helper_method :current_user
     # 'helper_method' makes a controller method 
     # available to all views (or templates)
 
-    def user_sign_in? 
+    def user_signed_in? 
         current_user.present?
     end
+
+    helper_method :user_signed_in?
 
     def authenticate_user!
         unless user_sign_in?
