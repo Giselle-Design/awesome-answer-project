@@ -39,6 +39,7 @@ class Question < ApplicationRecord
     # .answers.create(attributes = {}, ...)
     # .answers.create!(attributes = {}, ...)
     # .answers.reload
+    belongs_to :user
 
     # V A L I D A T I O N S
     # Create validations by using the 'validates' method

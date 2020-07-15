@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :first_name
       t.string :last_name
-      t.string :email, index: { unique: true }
+      t.string :email #, index: { unique: true }
       # Add an index to columns that you query often
       # It will improve the performance of the query 
       # Significantly as the db grows in size.
