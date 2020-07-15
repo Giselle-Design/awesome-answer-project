@@ -7,8 +7,10 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save 
             session[:user_id] = @user.id 
+            flash.delete(:warning)
             redirect_to root_path
         else 
+            flash[:warning] = "Unable to create user"
             render :new 
         end
     end

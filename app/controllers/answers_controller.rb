@@ -11,6 +11,7 @@ class AnswersController < ApplicationController
         @answer = Answer.new answer_params
         # @answer = { body: 'your answer' }
         @answer.question = @question # @answer = { body: 'your answer', question_id: 1 }
+        @answer.user = current_user
         if @answer.save
             redirect_to question_path(@question)
         else 

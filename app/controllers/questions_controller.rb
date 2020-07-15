@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
         # are allowable (as symbols).
 
         @question = Question.new question_params # question_params are title and body in our case
+        @question.user = current_user
         if @question.save
             flash[:notice] = 'Question created successfully'
             # if question is saved successfully, redirect to question show page with that question

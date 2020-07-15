@@ -5,6 +5,7 @@
         </span>
     </h1>
     <p class="shadow-none p-3 mb-5 bg-light rounded"><%= @question.body %></p>
+    <p class="text-muted"><%= @question.user.full_name %></p>
     <p>
         <%= @question.created_at %>
     </p>
@@ -83,7 +84,7 @@
             </small>
             |
             <small>
-                Answered <%= time_ago_in_words(answer.created_at) %>
+                Answered <%= time_ago_in_words(answer.created_at) %> By <strong><%= answer.user.full_name %></strong>
             </small>
             </p>
         </li>
