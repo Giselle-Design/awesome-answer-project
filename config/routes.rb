@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # our application is running on localhost:3000
@@ -70,6 +73,14 @@ Rails.application.routes.draw do
     # question_answers_path(@question)
   end
 
-  
+  resources :users, only: [:new, :create]
+
+  # 'resource' is singular instead of 'resources'
+  # Unlike 'resources', 'resource' will create routes
+  # that do CRUD operation on only one thing. There will be no
+  # index routes, and no route will have an ':id' wild card.
+  # When using a singular resource, the controller must
+  # still be plural.
+  resource :session, only: [:new, :create, :destroy]
 
 end
