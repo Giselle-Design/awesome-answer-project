@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :questions, dependent: :nullify
-    has_many :answers, depenedent: :nullify
+    has_many :answers, dependent: :nullify
 
     has_secure_password
     # Provies user authentication features on the model 
