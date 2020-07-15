@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    byebug
     user = User.find_by_email params[:email]
     if user&.authenticate params[:password]
       # The 'session' is an object useable in
