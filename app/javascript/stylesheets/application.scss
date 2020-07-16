@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Staatliches|Thasadith|Fira+Sans|Roboto|Hepta+Slab&display=swap");
+@import "bootstrap";
+
+h1, a {
+    font-family: Staatliches;
+}
+
+h3 > a {
+    font-family: "Fira Sans";
+}
