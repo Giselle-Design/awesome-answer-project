@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
     <%#
       above 👆 we area including the JavaScript code to the app.
@@ -34,16 +34,16 @@
 
             </ul>
             <ul class="navbar-nav navigation-links">
-                <li class="nav-item">
+                <li class="nav-item nav-links">
                     <%= link_to 'Contact Us', contact_us_path %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-links">
                     <%= link_to 'New Question', new_question_path %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-links">
                     <%= link_to 'All Questions', questions_path %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-links">
                   <% if user_signed_in? %>
                     <%= current_user.full_name %>
                     <%= link_to "Log Out", session_path, method: :delete, class: 'btn btn-danger' %>

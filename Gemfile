@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.1'
 gem 'bootstrap', '~> 4.5'
+gem 'cowsay', '~> 0.3.0'
+gem 'faker'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
