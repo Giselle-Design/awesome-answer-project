@@ -10,14 +10,16 @@
         <%= @question.created_at %>
     </p>
 
-    <div>
-        <%= link_to "Edit", edit_question_path(@question), class: 'btn btn-info' %>
-        <%= link_to "Delete", question_path(@question), 
-            method: :delete, 
-            class: 'btn btn-danger',
-            data: { confirm: "Are you sure?" } 
-        %>
-    </div>
+    <% if can? :crud, @question %>
+        <div>
+            <%= link_to "Edit", edit_question_path(@question), class: 'btn btn-info' %>
+            <%= link_to "Delete", question_path(@question), 
+                method: :delete, 
+                class: 'btn btn-danger',
+                data: { confirm: "Are you sure?" } 
+            %>
+        </div>
+    <% end %>
 </div>
 
 <hr />
@@ -72,6 +74,7 @@
                 <%= answer.body %>
             </p>
             <small>
+            <% if can? :crud, answer %>
              <%= link_to(
                  "Delete",
                  question_answer_path(@question, answer),
@@ -83,6 +86,7 @@
              )%>
             </small>
             |
+            <% end %>
             <small>
                 Answered <%= time_ago_in_words(answer.created_at) %> By <strong><%= answer.user.full_name %></strong>
             </small>

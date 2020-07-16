@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # encrypted data. To sign in a user, we 
       # store their 'user_id' in the session for 
       # later retrieval
-      session[:user_id] = user.id
+      session[:user_id] = user.id 
       redirect_to root_path, notice: "Sign in!"
     else
       flash[:alert] = "Wrong email or password"
